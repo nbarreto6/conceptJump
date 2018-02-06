@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+    Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
-		
-	}
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(new Vector2(10000, 0));
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.transform.Translate(new Vector3(1, 0, 0));
-	}
+
+
+    }
 }
