@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
@@ -78,10 +79,6 @@ public class Player : MonoBehaviour {
             Instantiate(EnemyPrefab, transform.position - new Vector3(0, 6, 0), transform.rotation);
     }
 
-   
-		
-
-	
 
 	void CalculateVelocity() {
 		float targetVelocityX = directionalInput.x * direction * moveSpeed;
@@ -99,6 +96,21 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Finish")
+        {
             direction = -1;
+        }
+        else if (collision.tag != "Floor")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag != "Floor")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

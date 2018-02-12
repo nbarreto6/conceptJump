@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
         timeToShoot -= Time.deltaTime;
         if (timeToShoot < 0)
         {
-            Instantiate(bulletPrefab, transform.position + new Vector3(0.5f, 0, 0), transform.rotation);
+            Instantiate(bulletPrefab, transform.position + new Vector3(4f, 0, 0), transform.rotation);
             timeToShoot = 2;
         }
 
